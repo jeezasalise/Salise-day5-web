@@ -51,8 +51,8 @@ def done ():
     redir=redirect_url()    
     return redirect(redir)
 
-@app.route("/action", methods=['POST'])
-def action ():
+@app.route("/create", methods=['POST'])
+def create_task ():
     #Adding a Task
     name=request.values.get("name")
     desc=request.values.get("desc")
@@ -74,9 +74,9 @@ def update ():
     task=todos.find({"_id":ObjectId(id)})
     return render_template('update.html',tasks=task,h=heading,t=title)
 
-@app.route("/action3", methods=['POST'])
-def action3 ():
-    #Updating a Task with various references
+@app.route("/update-details", methods=['POST'])
+def update_details ():
+    #Creates a Task with various references and saves it to DB
     name=request.values.get("name")
     desc=request.values.get("desc")
     date=request.values.get("date")
